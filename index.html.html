@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ascent">
+<meta name="theme-color" content="#0F1319">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>Ascent — 100K Block</title>
+<style>
+  :root{
+    --bg:#0F1319; --surface:#191F29; --surface2:#222A37; --line:#2E3745;
+    --text:#EAEEF3; --muted:#8792A3; --faint:#5C6675;
+    --amber:#F5A730; --amber-dim:#7a5a1e;
+    --green:#6FBF87; --green-dim:#2f5a3c;
+    --blue:#4F9DDB; --teal:#57B893; --violet:#B98BE0; --grey:#5B6472;
+    --danger:#E8705A;
+    --r:14px;
+    --tab-h:calc(56px + env(safe-area-inset-bottom));
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'SF Pro Text',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;overscroll-behavior-y:none;}
+  body{min-height:100vh;}
+  button{font-family:inherit;color:inherit;cursor:pointer;border:none;background:none;}
+  input{font-family:var(--mono);}
+
+  /* ---- shell ---- */
+  #app{max-width:520px;margin:0 auto;min-height:100vh;position:relative;}
+  header.top{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,var(--bg) 72%,rgba(15,19,25,0));
+    padding:calc(env(safe-area-inset-top) + 14px) 20px 10px;}
+  .brand{display:flex;align-items:center;gap:9px;}
+  .brand .peak{width:20px;height:20px;flex:0 0 auto;}
+  .brand h1{font-family:var(--mono);font-size:15px;letter-spacing:.32em;font-weight:600;margin:0;
+    text-transform:uppercase;}
+  .brand .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--faint);
+    margin-left:auto;text-transform:uppercase;}
+  main{padding:4px 16px calc(var(--tab-h) + 28px);}
+
+  /* ---- generic ---- */
+  .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--muted);
+    text-transform:uppercase;margin:0 0 8px;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px;}
+  .row{display:flex;align-items:center;gap:12px;}
+  .chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap;}
+  .chip.amber{color:var(--amber);border-color:var(--amber-dim);background:rgba(245,167,48,.08);}
+  .chip.green{color:var(--green);border-color:var(--green-dim);background:rgba(111,191,135,.08);}
+  .chip.blue{color:var(--blue);border-color:#2a4a63;background:rgba(79,157,219,.08);}
+  .chip.teal{color:var(--teal);border-color:#2a5a4a;background:rgba(87,184,147,.08);}
+  .chip.violet{color:var(--violet);border-color:#4d3a63;background:rgba(185,139,224,.08);}
+  .chip.grey{color:var(--muted);border-color:var(--line);}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;}
+
+  /* ---- Today ---- */
+  .date-big{font-family:var(--mono);font-weight:600;font-size:30px;letter-spacing:.01em;line-height:1;margin:2px 0 2px;}
+  .date-sub{color:var(--muted);font-size:13px;margin-bottom:16px;}
+  .today-cta{display:block;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r);padding:18px;margin-bottom:12px;}
+  .today-cta.lift{border-color:var(--amber-dim);background:linear-gradient(135deg,rgba(245,167,48,.10),rgba(245,167,48,.02));}
+  .today-cta .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;}
+  .today-cta .v{font-size:21px;font-weight:650;margin-top:6px;letter-spacing:-.01em;}
+  .today-cta .go{margin-top:14px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);
+    font-size:12px;letter-spacing:.1em;color:var(--amber);text-transform:uppercase;}
+  .run-line{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;margin-top:11px;}
+  .run-line .dot{width:7px;height:7px;border-radius:50%;background:var(--faint);flex:0 0 auto;}
+
+  .phase-banner{border-radius:var(--r);padding:13px 15px;margin-bottom:12px;border:1px solid var(--line);
+    background:var(--surface);font-size:13.5px;line-height:1.5;color:#cdd4de;}
+  .phase-banner b{color:var(--text);}
+  .phase-banner.warn{border-color:#6a3a30;background:rgba(232,112,90,.07);}
+
+  /* ---- elevation profile ---- */
+  .profile-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 12px 10px;margin-bottom:12px;}
+  .profile-wrap svg{display:block;width:100%;height:auto;}
+  .profile-legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:10px;padding:0 4px;}
+  .profile-legend .lg{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;
+    letter-spacing:.06em;color:var(--muted);text-transform:uppercase;}
+  .profile-legend .sw{width:10px;height:3px;border-radius:2px;}
+
+  /* ---- Train list ---- */
+  .sess-card{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--surface);
+    border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;margin-bottom:11px;}
+  .sess-card.today{border-color:var(--amber-dim);}
+  .sess-card .idx{font-family:var(--mono);font-size:12px;color:var(--faint);width:26px;flex:0 0 auto;}
+  .sess-card .body .nm{font-weight:600;font-size:16px;}
+  .sess-card .body .mt{color:var(--muted);font-size:12px;margin-top:2px;font-family:var(--mono);letter-spacing:.02em;}
+  .sess-card .arw{margin-left:auto;color:var(--faint);font-size:18px;}
+
+  /* ---- Session detail ---- */
+  .detail-head{display:flex;align-items:center;gap:12px;margin:2px 0 14px;}
+  .back{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);display:inline-flex;align-items:center;gap:6px;}
+  .detail-head h2{font-size:21px;margin:0;font-weight:680;letter-spacing:-.01em;}
+  .ex{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 14px 8px;margin-bottom:11px;}
+  .ex.plyo{border-left:3px solid var(--blue);}
+  .ex.main{border-left:3px solid var(--amber);}
+  .ex-top{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
+  .ex-top .nm{font-weight:600;font-size:15.5px;flex:1;}
+  .ex-top .scheme{font-family:var(--mono);font-size:12px;color:var(--amber);white-space:nowrap;letter-spacing:.02em;}
+  .ex-note{color:var(--muted);font-size:12px;margin-bottom:4px;line-height:1.4;}
+  .ex-flag{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+    padding:2px 7px;border-radius:6px;margin:2px 0 6px;}
+  .ex-flag.skip{color:var(--danger);background:rgba(232,112,90,.1);border:1px solid #6a3a30;}
+  .ex-flag.ease{color:var(--blue);background:rgba(79,157,219,.09);border:1px solid #2a4a63;}
+  .last{font-family:var(--mono);font-size:11px;color:var(--faint);margin:3px 0 9px;letter-spacing:.02em;}
+  .last b{color:var(--muted);font-weight:500;}
+  .sets{display:flex;flex-direction:column;gap:7px;padding-bottom:6px;}
+  .setrow{display:flex;align-items:center;gap:8px;}
+  .setrow .sn{font-family:var(--mono);font-size:11px;color:var(--faint);width:20px;flex:0 0 auto;}
+  .setrow input{width:100%;background:var(--surface2);border:1px solid var(--line);border-radius:9px;
+    color:var(--text);font-size:15px;padding:9px 10px;text-align:center;min-width:0;-webkit-appearance:none;}
+  .setrow input::placeholder{color:var(--faint);}
+  .setrow .x{color:var(--faint);font-family:var(--mono);font-size:12px;flex:0 0 auto;}
+  .setrow .chk{width:34px;height:34px;flex:0 0 auto;border-radius:9px;border:1px solid var(--line);
+    background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--faint);}
+  .setrow.done .chk{background:rgba(111,191,135,.14);border-color:var(--green-dim);color:var(--green);}
+  .setrow.done input{border-color:var(--green-dim);}
+  .unit{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;
+    display:flex;gap:8px;padding:0 0 8px 28px;}
+  .unit span{flex:1;text-align:center;}
+
+  /* ---- Plan / Guide ---- */
+  .cal{width:100%;border-collapse:collapse;font-size:13px;}
+  .cal td,.cal th{padding:9px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+  .cal th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:500;}
+  .cal .d{font-family:var(--mono);color:var(--muted);width:42px;}
+  .cal .lift{color:var(--amber);font-weight:600;}
+  .cal .rest{color:var(--faint);}
+  .cal tr.today-r td{background:rgba(245,167,48,.06);}
+  .phase-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);}
+  .phase-item:last-child{border-bottom:none;}
+  .phase-item .bar{width:3px;border-radius:3px;flex:0 0 auto;}
+  .phase-item .pn{font-weight:600;font-size:15px;}
+  .phase-item .pd{font-family:var(--mono);font-size:11px;color:var(--faint);margin:1px 0 5px;letter-spacing:.03em;}
+  .phase-item .pg{font-size:12.5px;color:var(--muted);line-height:1.5;}
+  .phase-item.active{position:relative;}
+  .phase-item.active .pn::after{content:'NOW';font-family:var(--mono);font-size:9px;letter-spacing:.12em;
+    color:var(--amber);border:1px solid var(--amber-dim);border-radius:6px;padding:1px 5px;margin-left:8px;vertical-align:middle;}
+  .rule{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);}
+  .rule:last-child{border-bottom:none;}
+  .rule .rn{font-family:var(--mono);color:var(--amber);font-size:13px;flex:0 0 auto;width:22px;}
+  .rule .rt{font-size:13.5px;line-height:1.5;color:#cdd4de;}
+  .rule .rt b{color:var(--text);}
+  h3.sec{font-size:13px;font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    margin:22px 4px 10px;font-weight:500;}
+
+  /* ---- tab bar ---- */
+  nav.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;height:var(--tab-h);
+    padding-bottom:env(safe-area-inset-bottom);background:rgba(20,25,33,.86);backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);
+    display:flex;max-width:520px;margin:0 auto;}
+  nav.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    color:var(--faint);font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding-top:8px;}
+  nav.tabbar button.on{color:var(--amber);}
+  nav.tabbar button svg{width:22px;height:22px;}
+
+  /* ---- rest timer sheet ---- */
+  .sheet{position:fixed;inset:0;z-index:50;background:rgba(8,11,15,.72);backdrop-filter:blur(6px);
+    display:none;align-items:flex-end;}
+  .sheet.open{display:flex;}
+  .sheet-inner{width:100%;max-width:520px;margin:0 auto;background:var(--surface);border:1px solid var(--line);
+    border-bottom:none;border-radius:20px 20px 0 0;padding:20px 20px calc(24px + env(safe-area-inset-bottom));}
+  .sheet-grip{width:38px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 16px;}
+  .timer-num{font-family:var(--mono);font-size:56px;font-weight:600;text-align:center;letter-spacing:.02em;
+    font-variant-numeric:tabular-nums;margin:4px 0 16px;}
+  .timer-num.go{color:var(--amber);}
+  .presets{display:flex;gap:8px;margin-bottom:14px;}
+  .presets button{flex:1;padding:12px;border-radius:11px;background:var(--surface2);border:1px solid var(--line);
+    font-family:var(--mono);font-size:13px;color:var(--text);letter-spacing:.04em;}
+  .presets button.sel{border-color:var(--amber-dim);color:var(--amber);background:rgba(245,167,48,.08);}
+  .sheet-actions{display:flex;gap:8px;}
+  .sheet-actions button{flex:1;padding:14px;border-radius:12px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;}
+  .btn-amber{background:var(--amber);color:#1a1206;font-weight:700;}
+  .btn-ghost{background:var(--surface2);border:1px solid var(--line);color:var(--muted);}
+
+  .fab-rest{position:fixed;right:16px;bottom:calc(var(--tab-h) + 14px);z-index:25;
+    background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:11px 16px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);
+    box-shadow:0 6px 20px rgba(0,0,0,.4);display:none;align-items:center;gap:7px;}
+  #app.in-session .fab-rest{display:inline-flex;}
+
+  .footnote{color:var(--faint);font-size:11px;text-align:center;margin:18px 0 4px;line-height:1.5;font-family:var(--mono);letter-spacing:.03em;}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <div class="brand">
+      <svg class="peak" viewBox="0 0 24 24" fill="none"><path d="M2 20L9 8l3.5 6L15 9l7 11H2z" fill="#F5A730" opacity=".18"/><path d="M2 20L9 8l3.5 6L15 9l7 11" stroke="#F5A730" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      <h1>Ascent</h1>
+      <span class="tag" id="hdr-tag">100K BLOCK</span>
+    </div>
+  </header>
+  <main id="view"></main>
+  <button class="fab-rest" onclick="openTimer()">⏱ Rest</button>
+  <nav class="tabbar" id="tabbar"></nav>
+</div>
+
+<div class="sheet" id="sheet">
+  <div class="sheet-inner">
+    <div class="sheet-grip"></div>
+    <div class="eyebrow" style="text-align:center">Rest Timer</div>
+    <div class="timer-num" id="timer-num">2:00</div>
+    <div class="presets" id="presets"></div>
+    <div class="sheet-actions">
+      <button class="btn-ghost" onclick="closeTimer()">Close</button>
+      <button class="btn-amber" id="timer-toggle" onclick="toggleTimer()">Start</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------------- data ---------------- */
+const RACE = new Date(2026,11,5);         // Dec 5 2026
+const BLOCK_START = new Date(2026,7,4);    // Aug 4 2026
+
+const PHASES = [
+  {key:'recovery', name:'Elkhorn Recovery', start:[2026,7,1],  end:[2026,7,9],  color:'grey',
+   guide:'Fresh off the 50-miler. Movement and mobility only — let the legs come back before loading.',
+   banner:'You just ran Elkhorn. Keep it to light movement; let recovery finish before heavy squats.', warn:false},
+  {key:'reintro', name:'Reintroduction', start:[2026,7,10], end:[2026,7,23], color:'blue',
+   guide:'Submaximal loads (~50–65%), higher reps. Re-groove the patterns. No Nordics or heavy eccentrics yet.',
+   banner:'<b>Reintroduction.</b> Submaximal (~50–65%), higher reps. Skip Nordics & heavy eccentrics — ease plyos in.', warn:false},
+  {key:'strength', name:'Max Strength', start:[2026,7,24], end:[2026,9,11], color:'amber',
+   guide:'Full 4-day plan at target intensity. Keep 2–3 reps in reserve — no grinding. Deload ~week 6.',
+   banner:'<b>Max Strength.</b> Work at 2–3 reps in reserve. Never grind. Add load via double progression.', warn:false},
+  {key:'maintenance', name:'Maintenance', start:[2026,9,12], end:[2026,10,22], color:'teal',
+   guide:'Drop to 2×/week (1 lower + 1 upper). Cut volume ~40–50%, hold intensity on key lifts. Ease off Nordics ~3 wks out. Long runs peak now.',
+   banner:'<b>Maintenance.</b> 2×/week focus — Lower (Mon) + Upper (Sat). Cut volume ~40–50%, keep intensity. Ease off Nordics.', warn:false},
+  {key:'taper', name:'Taper', start:[2026,10,23], end:[2026,11,5], color:'violet',
+   guide:'One light full-body session early in the taper, then nothing that creates soreness. No lifting in the final 5–7 days.',
+   banner:'<b>Taper.</b> Keep it light — nothing that creates soreness. No lifting in the final 5–7 days.', warn:true},
+];
+
+const RUNDAY = ['Rest','Quality run','Easy / recovery run','Long run','Easy / recovery run','Quality run','Easy run'];
+// day index (0=Sun) -> session key
+const DAYSESSION = {1:'lowerA', 3:'push', 5:'lowerB', 6:'pull'};
+
+const SESSIONS = {
+  lowerA:{name:'Lower A · Max Strength', day:'Monday', tint:'amber', ex:[
+    {id:'la_plyo', nm:'Pogo hops / box jumps', scheme:'3×10', note:'Done fresh · step down from box', kind:'plyo', plyo:true},
+    {id:'la_squat', nm:'Back or front squat', scheme:'4×4', note:'3-sec eccentric on 1–2 sets — downhill prep', kind:'main'},
+    {id:'la_rdl', nm:'Romanian / trap-bar deadlift', scheme:'3×6', note:'', kind:'main'},
+    {id:'la_ht', nm:'Barbell hip thrust', scheme:'3×8', note:'', kind:''},
+    {id:'la_calf', nm:'Standing calf raise', scheme:'4×8–10', note:'Heavy · gastrocnemius', kind:''},
+    {id:'la_pallof', nm:'Pallof press', scheme:'3×10', note:'Per side · anti-rotation', kind:''},
+  ]},
+  push:{name:'Upper Push · Aesthetics', day:'Wednesday', tint:'amber', ex:[
+    {id:'up_incline', nm:'Incline DB / barbell press', scheme:'4×6–10', note:'', kind:'main'},
+    {id:'up_ohp', nm:'Standing overhead press', scheme:'3×5–8', note:'', kind:'main'},
+    {id:'up_dip', nm:'Weighted dip / flat DB press', scheme:'3×8–12', note:'', kind:''},
+    {id:'up_lat', nm:'Lateral raise', scheme:'3×12–15', note:'', kind:''},
+    {id:'up_tri', nm:'Triceps · pushdown + o/head', scheme:'3×10–15', note:'', kind:''},
+    {id:'up_face', nm:'Face pull', scheme:'3×15', note:'', kind:''},
+  ]},
+  lowerB:{name:'Lower B · Single-Leg & Power', day:'Friday', tint:'amber', ex:[
+    {id:'lb_plyo', nm:'Single-leg hops / bounding', scheme:'3×6', note:'Per side · done fresh', kind:'plyo', plyo:true},
+    {id:'lb_bss', nm:'Bulgarian split squat', scheme:'3×8', note:'Per leg · slow eccentric', kind:'main'},
+    {id:'lb_step', nm:'Weighted step-up', scheme:'3×8', note:'Per leg', kind:''},
+    {id:'lb_nordic', nm:'Nordic hamstring curl', scheme:'3×5–8', note:'Eccentric armor for descents', kind:'main', eccentric:true},
+    {id:'lb_calf', nm:'Seated calf raise', scheme:'4×15–20', note:'Soleus — the descent muscle', kind:''},
+    {id:'lb_carry', nm:'Suitcase carry', scheme:'3×30m', note:'Per side', kind:''},
+  ]},
+  pull:{name:'Upper Pull · Aesthetics & Posture', day:'Saturday', tint:'amber', ex:[
+    {id:'pl_pu', nm:'Pull-up / chin-up', scheme:'4×6–10', note:'Add load if easy', kind:'main'},
+    {id:'pl_row', nm:'BB / chest-supported row', scheme:'4×8–12', note:'', kind:'main'},
+    {id:'pl_cable', nm:'Cable row', scheme:'3×10–12', note:'', kind:''},
+    {id:'pl_rear', nm:'Rear delt', scheme:'3×15', note:'', kind:''},
+    {id:'pl_curl', nm:'Biceps curl', scheme:'3×10–12', note:'', kind:''},
+    {id:'pl_shrug', nm:'Shrug', scheme:'2×12–15', note:'Optional', kind:''},
+  ]},
+};
+const SESSION_ORDER = ['lowerA','push','lowerB','pull'];
+
+const RULES = [
+  ['1','<b>Never heavy legs the day before a key run.</b> That is why Tuesday and Thursday stay clean.'],
+  ['2','<b>Consolidate hard onto hard.</b> Lower lifts ride your workout-run days; keep easy days easy.'],
+  ['3','<b>If overloaded, cut lift frequency first</b> (4 → 3 → 2). Don\'t scatter lifts onto easy days.'],
+  ['4','<b>Run wins ties.</b> Forced to choose between a key run and a lift? Run. Strength is the support act.'],
+  ['5','<b>Plan follows KoopAI.</b> If a run moves, move the lift with it and re-apply rules 1–2.'],
+];
+
+/* ---------------- state / storage ---------------- */
+let mem = {}; // in-memory fallback
+function load(){
+  try{ const r = localStorage.getItem('ascent_v1'); return r?JSON.parse(r):{logs:{}}; }
+  catch(e){ return mem.data || (mem.data={logs:{}}); }
+}
+function save(s){
+  try{ localStorage.setItem('ascent_v1', JSON.stringify(s)); }
+  catch(e){ mem.data = s; }
+}
+let STATE = load();
+if(!STATE.logs) STATE.logs = {};
+
+/* ---------------- date helpers ---------------- */
+function today(){ return new Date(); }
+function ymd(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function mk(a){ return new Date(a[0],a[1],a[2]); }
+function daysBetween(a,b){ return Math.round((b-a)/86400000); }
+
+function currentPhase(d){
+  d = d||today();
+  for(const p of PHASES){ if(d>=mk(p.start) && d<=new Date(mk(p.end).getTime()+86399000)) return p; }
+  if(d < mk(PHASES[0].start)) return PHASES[0];
+  return {key:'done',name:'Block Complete',color:'green',
+    guide:'Race run. Recover, then rebuild into an off-season strength base.',
+    banner:'Block complete — nice work. Recover fully, then start a fresh off-season base.',warn:false};
+}
+function setCount(scheme){ const m=scheme.match(/^(\d+)/); return m?parseInt(m[1]):3; }
+
+/* ---------------- elevation profile ---------------- */
+const PROFILE=[[0,.16],[.08,.30],[.15,.22],[.23,.40],[.31,.32],[.40,.54],[.48,.46],
+  [.57,.66],[.65,.56],[.74,.78],[.82,.68],[.90,.90],[1,1]];
+function heightAt(t){
+  for(let i=0;i<PROFILE.length-1;i++){
+    const [t0,h0]=PROFILE[i],[t1,h1]=PROFILE[i+1];
+    if(t>=t0&&t<=t1){ const f=(t-t0)/(t1-t0||1); return h0+(h1-h0)*f; }
+  }
+  return t<0?PROFILE[0][1]:PROFILE[PROFILE.length-1][1];
+}
+function phaseColorVar(c){return {grey:'#5B6472',blue:'#4F9DDB',amber:'#F5A730',teal:'#57B893',violet:'#B98BE0',green:'#6FBF87'}[c]||'#8792A3';}
+
+function elevationSVG(){
+  const W=340,H=150,padX=8,padTop=14,baseY=H-26,amp=baseY-padTop;
+  const X=t=>padX+t*(W-2*padX);
+  const Y=h=>baseY-h*amp;
+  let line='', area='';
+  PROFILE.forEach((p,i)=>{ const x=X(p[0]).toFixed(1),y=Y(p[1]).toFixed(1);
+    line+=(i?'L':'M')+x+' '+y+' '; });
+  area='M'+X(0)+' '+baseY+' '+PROFILE.map(p=>'L'+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)).join(' ')+' L'+X(1)+' '+baseY+' Z';
+
+  // phase bands along baseline
+  const total=daysBetween(BLOCK_START,RACE);
+  let bands='';
+  PHASES.forEach(p=>{
+    let s=Math.max(0,daysBetween(BLOCK_START,mk(p.start))/total);
+    let e=Math.min(1,daysBetween(BLOCK_START,mk(p.end))/total);
+    if(e<=0||s>=1) return;
+    bands+=`<rect x="${X(s).toFixed(1)}" y="${baseY+6}" width="${(X(e)-X(s)).toFixed(1)}" height="5" rx="2.5" fill="${phaseColorVar(p.color)}" opacity=".85"/>`;
+  });
+
+  // today marker
+  const tNow=Math.min(1,Math.max(0,daysBetween(BLOCK_START,today())/total));
+  const mx=X(tNow), my=Y(heightAt(tNow));
+  const dtr=Math.max(0,daysBetween(today(),RACE));
+  const marker = tNow<=1 ? `
+    <line x1="${mx.toFixed(1)}" y1="${padTop-4}" x2="${mx.toFixed(1)}" y2="${baseY}" stroke="#EAEEF3" stroke-width="1" stroke-dasharray="2 3" opacity=".45"/>
+    <circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="4.5" fill="#F5A730" stroke="#0F1319" stroke-width="2"/>
+    <text x="${Math.min(W-46,Math.max(padX,mx-8)).toFixed(1)}" y="${padTop+2}" fill="#EAEEF3" font-family="var(--mono)" font-size="8" letter-spacing="1">NOW</text>` : '';
+
+  // summit flag
+  const sx=X(1),sy=Y(1);
+  const summit=`<circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="3.5" fill="#F5A730"/>
+    <line x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${sx.toFixed(1)}" y2="${(sy-13).toFixed(1)}" stroke="#F5A730" stroke-width="1.4"/>
+    <path d="M${sx.toFixed(1)} ${(sy-13).toFixed(1)} l7 2 -7 2.4z" fill="#F5A730"/>`;
+
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Training block elevation profile">
+    <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F5A730" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#F5A730" stop-opacity="0"/></linearGradient></defs>
+    <path d="${area}" fill="url(#ag)"/>
+    <path d="${line}" fill="none" stroke="#F5A730" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    ${bands}${marker}${summit}
+    <text x="${padX}" y="${H-4}" fill="#5C6675" font-family="var(--mono)" font-size="8" letter-spacing="1">AUG 4</text>
+    <text x="${W-padX}" y="${H-4}" fill="#5C6675" font-family="var(--mono)" font-size="8" letter-spacing="1" text-anchor="end">RACE ${dtr}D</text>
+  </svg>`;
+}
+
+/* ---------------- views ---------------- */
+let TAB='today', OPEN_SESSION=null;
+
+function renderTab(){
+  const tabs=[['today','Today',pinIcon('flag')],['train','Train',pinIcon('dumbbell')],
+    ['plan','Plan',pinIcon('mountain')],['guide','Guide',pinIcon('book')]];
+  document.getElementById('tabbar').innerHTML = tabs.map(t=>
+    `<button class="${TAB===t[0]?'on':''}" onclick="go('${t[0]}')">${t[2]}${t[1]}</button>`).join('');
+}
+function pinIcon(k){
+  const p={
+    flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linejoin="round"/>',
+    dumbbell:'<path d="M4 9v6M7 7v10M17 7v10M20 9v6M7 12h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>',
+    mountain:'<path d="M3 19L9 8l3.5 6L15 9l6 10H3z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>',
+    book:'<path d="M5 4h11a2 2 0 012 2v13H7a2 2 0 00-2 2V4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>'
+  }[k];
+  return `<svg viewBox="0 0 24 24">${p}</svg>`;
+}
+
+function go(tab){ TAB=tab; OPEN_SESSION=null; document.getElementById('app').classList.remove('in-session'); render(); window.scrollTo(0,0); }
+
+function render(){
+  renderTab();
+  const v=document.getElementById('view');
+  if(OPEN_SESSION){ v.innerHTML=viewSession(OPEN_SESSION); wireSession(); return; }
+  if(TAB==='today') v.innerHTML=viewToday();
+  else if(TAB==='train') v.innerHTML=viewTrain();
+  else if(TAB==='plan') v.innerHTML=viewPlan();
+  else v.innerHTML=viewGuide();
+}
+
+function viewToday(){
+  const d=today(), dow=d.getDay();
+  const ph=currentPhase(d);
+  const wk=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][dow];
+  const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+  const sk=DAYSESSION[dow];
+  const dtr=Math.max(0,daysBetween(d,RACE));
+  document.getElementById('hdr-tag').textContent = dtr+'D TO RACE';
+
+  let cta;
+  if(sk){ const s=SESSIONS[sk];
+    cta=`<button class="today-cta lift" onclick="openSession('${sk}')">
+      <div class="k">Today · Lift</div>
+      <div class="v">${s.name.split(' · ')[0]}</div>
+      <div class="go">Start session →</div>
+    </button>`;
+  } else {
+    cta=`<div class="today-cta">
+      <div class="k">Today · ${RUNDAY[dow]==='Rest'?'Rest':'Run only'}</div>
+      <div class="v">${RUNDAY[dow]}</div>
+      <div class="run-line" style="margin-top:12px"><span class="dot"></span>No lift scheduled — open <b style="color:var(--muted)">Train</b> to log one anyway.</div>
+    </div>`;
+  }
+  const runNote = sk ? `<div class="run-line"><span class="dot"></span>${RUNDAY[dow]} (KoopAI) — run first, lift after.</div>`:'';
+
+  return `<div class="eyebrow">${wk}</div>
+    <div class="date-big">${mo} ${d.getDate()}</div>
+    <div class="date-sub"><span class="chip ${ph.color}">${ph.name}</span></div>
+    <div class="profile-wrap">${elevationSVG()}</div>
+    ${cta}
+    ${runNote}
+    <div class="phase-banner ${ph.warn?'warn':''}">${ph.banner}</div>`;
+}
+
+function viewTrain(){
+  const dow=today().getDay(), todayKey=DAYSESSION[dow];
+  const ph=currentPhase();
+  const maint = ph.key==='maintenance';
+  let note = maint ? `<div class="phase-banner">In <b>maintenance</b>, prioritise <b>Lower A</b> (Mon) and <b>Upper Pull</b> (Sat). Trim the rest.</div>`:'';
+  return `<div class="eyebrow">Sessions</div>${note}` + SESSION_ORDER.map((k,i)=>{
+    const s=SESSIONS[k];
+    return `<button class="sess-card ${todayKey===k?'today':''}" onclick="openSession('${k}')">
+      <span class="idx">${String(i+1).padStart(2,'0')}</span>
+      <span class="body"><span class="nm">${s.name.split(' · ')[0]}</span>
+      <span class="mt">${s.day} · ${s.ex.length} exercises${todayKey===k?' · TODAY':''}</span></span>
+      <span class="arw">›</span></button>`;
+  }).join('');
+}
+
+function exFlag(ex, ph){
+  if(ex.plyo && ph.key==='reintro') return `<span class="ex-flag ease">Ease in — reintroduction</span>`;
+  if(ex.eccentric && (ph.key==='reintro'||ph.key==='taper')) return `<span class="ex-flag skip">Skip this phase</span>`;
+  if(ex.eccentric && ph.key==='maintenance') return `<span class="ex-flag ease">Reduce near race</span>`;
+  return '';
+}
+
+function viewSession(k){
+  const s=SESSIONS[k], ph=currentPhase(), tk=ymd(today());
+  const banner = `<div class="phase-banner ${ph.warn?'warn':''}">${ph.banner}</div>`;
+  const rows = s.ex.map(ex=>{
+    const n=setCount(ex.scheme);
+    const log = (STATE.logs[ex.id]||{});
+    const todayEntry = log[tk];
+    // last time = most recent date < today
+    let lastStr='';
+    const prevDates = Object.keys(log).filter(dt=>dt<tk).sort();
+    if(prevDates.length){
+      const last=log[prevDates[prevDates.length-1]];
+      const parts=(last.sets||[]).filter(x=>x&&(x.w||x.r)).map(x=>`${x.w||'–'}×${x.r||'–'}`);
+      if(parts.length) lastStr=`<div class="last"><b>Last</b> ${prevDates[prevDates.length-1].slice(5)} · ${parts.join('  ')}</div>`;
+    }
+    let setsHTML='';
+    for(let i=0;i<n;i++){
+      const cur = todayEntry && todayEntry.sets && todayEntry.sets[i] ? todayEntry.sets[i] : {};
+      const done = cur.done?'done':'';
+      const ph_w = (prevDates.length && (STATE.logs[ex.id][prevDates[prevDates.length-1]].sets[i]||{}).w) || '';
+      setsHTML+=`<div class="setrow ${done}" data-ex="${ex.id}" data-i="${i}">
+        <span class="sn">${i+1}</span>
+        <input type="text" inputmode="decimal" class="in-w" placeholder="${ph_w||'lb'}" value="${cur.w||''}">
+        <span class="x">×</span>
+        <input type="text" inputmode="numeric" class="in-r" placeholder="reps" value="${cur.r||''}">
+        <button class="chk" aria-label="Mark set done">✓</button>
+      </div>`;
+    }
+    return `<div class="ex ${ex.kind}">
+      <div class="ex-top"><span class="nm">${ex.nm}</span><span class="scheme">${ex.scheme}</span></div>
+      ${ex.note?`<div class="ex-note">${ex.note}</div>`:''}
+      ${exFlag(ex,ph)}
+      ${lastStr}
+      <div class="unit"><span>Weight</span><span>Reps</span></div>
+      <div class="sets">${setsHTML}</div>
+    </div>`;
+  }).join('');
+  return `<div class="detail-head">
+      <button class="back" onclick="go('${DAYSESSION[today().getDay()]===k?'today':'train'}')">‹ Back</button>
+    </div>
+    <h2 style="margin:0 0 3px">${s.name.split(' · ')[0]}</h2>
+    <div class="eyebrow" style="margin-bottom:14px">${s.name.split(' · ')[1]||''} · ${s.day}</div>
+    ${banner}${rows}
+    <div class="footnote">Entries save automatically on this phone.</div>`;
+}
+
+function openSession(k){ OPEN_SESSION=k; document.getElementById('app').classList.add('in-session'); render(); window.scrollTo(0,0); }
+
+function wireSession(){
+  const tk=ymd(today());
+  function ensure(ex,n){
+    if(!STATE.logs[ex]) STATE.logs[ex]={};
+    if(!STATE.logs[ex][tk]) STATE.logs[ex][tk]={sets:Array.from({length:n},()=>({w:'',r:'',done:false}))};
+    while(STATE.logs[ex][tk].sets.length<n) STATE.logs[ex][tk].sets.push({w:'',r:'',done:false});
+    return STATE.logs[ex][tk];
+  }
+  document.querySelectorAll('.setrow').forEach(row=>{
+    const ex=row.dataset.ex, i=+row.dataset.i;
+    const total=row.parentElement.children.length;
+    const w=row.querySelector('.in-w'), r=row.querySelector('.in-r'), chk=row.querySelector('.chk');
+    const commit=()=>{ const e=ensure(ex,total); e.sets[i].w=w.value.trim(); e.sets[i].r=r.value.trim(); save(STATE); };
+    w.addEventListener('input',commit); r.addEventListener('input',commit);
+    chk.addEventListener('click',()=>{ const e=ensure(ex,total);
+      e.sets[i].done=!e.sets[i].done; row.classList.toggle('done',e.sets[i].done);
+      if(navigator.vibrate) navigator.vibrate(8); save(STATE);
+      if(e.sets[i].done) openTimer(); });
+  });
+}
+
+function viewPlan(){
+  const dow=today().getDay();
+  const cal=[['MON','Quality','Lower A',1],['TUE','Easy','—',2],['WED','Long run','Upper Push',3],
+    ['THU','Easy','—',4],['FRI','Quality','Lower B',5],['SAT','Easy','Upper Pull',6],['SUN','Rest','—',0]];
+  const rows=cal.map(c=>{
+    const lift = c[2]==='—' ? `<span class="rest">—</span>` : `<span class="lift">${c[2]}</span>`;
+    return `<tr class="${dow===c[3]?'today-r':''}"><td class="d">${c[0]}</td><td>${c[1]}</td><td>${lift}</td></tr>`;
+  }).join('');
+  const phases = PHASES.map(p=>{
+    const active = currentPhase().key===p.key;
+    return `<div class="phase-item ${active?'active':''}">
+      <div class="bar" style="background:${phaseColorVar(p.color)}"></div>
+      <div><div class="pn">${p.name}</div>
+      <div class="pd">${fmtRange(p.start,p.end)}</div>
+      <div class="pg">${p.guide}</div></div></div>`;
+  }).join('');
+  return `<div class="eyebrow">The Climb</div>
+    <div class="profile-wrap">${elevationSVG()}</div>
+    <div class="profile-legend">${PHASES.map(p=>`<span class="lg"><span class="sw" style="background:${phaseColorVar(p.color)}"></span>${p.name}</span>`).join('')}</div>
+    <h3 class="sec">Weekly Rhythm</h3>
+    <div class="card" style="padding:6px 14px"><table class="cal">
+      <tr><th>Day</th><th>Run · KoopAI</th><th>Lift</th></tr>${rows}</table></div>
+    <h3 class="sec">Phases → Nov 21</h3>
+    <div class="card">${phases}</div>`;
+}
+function fmtRange(a,b){
+  const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${mo[a[1]]} ${a[2]} – ${mo[b[1]]} ${b[2]}`;
+}
+
+function viewGuide(){
+  return `<div class="eyebrow">Rules That Matter Most</div>
+    <div class="card">${RULES.map(r=>`<div class="rule"><span class="rn">${r[0]}</span><span class="rt">${r[1]}</span></div>`).join('')}</div>
+    <h3 class="sec">Progression</h3>
+    <div class="card"><div class="rt" style="font-size:13.5px;line-height:1.6;color:#cdd4de">
+      <b>Double progression.</b> Add reps within the range first; once you hit the top with reps to spare, add load — <b>2.5–5 lb</b> upper, <b>5–10 lb</b> lower. Keep <b>2–3 reps in reserve</b> on strength lifts. Never grind.
+    </div></div>
+    <h3 class="sec">Deloads</h3>
+    <div class="card"><div class="rt" style="font-size:13.5px;line-height:1.6;color:#cdd4de">
+      Every <b>5–6 weeks</b>, or whenever running volume spikes: cut sets <b>~40–50%</b>, keep intensity moderate. Plyos: start <b>40–60 foot contacts</b>/session; skip entirely when legs are cooked.
+    </div></div>
+    <h3 class="sec">Durability Priorities</h3>
+    <div class="card"><div class="rt" style="font-size:13.5px;line-height:1.6;color:#cdd4de">
+      <b>Soleus</b> (seated calf) for downhills · <b>eccentric strength</b> (slow lowering + Nordics) so quads survive mile 35 · <b>single-leg</b> work for every uneven landing on the trail.
+    </div></div>
+    <h3 class="sec">Timing</h3>
+    <div class="card"><div class="rt" style="font-size:13.5px;line-height:1.6;color:#cdd4de">
+      Separate run and lift by several hours when you can (run AM, lift PM). Same session? <b>Quality run first</b>, lift after — the run is the priority adaptation.
+    </div></div>
+    <div class="footnote">Ascent · built for the Elkhorn → 100K block</div>`;
+}
+
+/* ---------------- rest timer ---------------- */
+let tSel=120, tLeft=120, tTick=null, tRunning=false;
+function renderPresets(){
+  document.getElementById('presets').innerHTML=[90,120,180].map(s=>
+    `<button class="${tSel===s?'sel':''}" onclick="setPreset(${s})">${s%60?Math.floor(s/60)+':'+String(s%60).padStart(2,'0'):s/60+':00'}</button>`).join('');
+}
+function fmtT(s){ return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function setPreset(s){ tSel=s; if(!tRunning){ tLeft=s; paintT(); } renderPresets(); }
+function paintT(){ const el=document.getElementById('timer-num'); el.textContent=fmtT(tLeft);
+  el.classList.toggle('go',tRunning); }
+function openTimer(){ document.getElementById('sheet').classList.add('open'); if(!tRunning){tLeft=tSel;} renderPresets(); paintT();
+  document.getElementById('timer-toggle').textContent=tRunning?'Pause':'Start'; }
+function closeTimer(){ document.getElementById('sheet').classList.remove('open'); }
+function toggleTimer(){
+  if(tRunning){ tRunning=false; clearInterval(tTick); document.getElementById('timer-toggle').textContent='Start'; paintT(); return; }
+  if(tLeft<=0) tLeft=tSel;
+  tRunning=true; document.getElementById('timer-toggle').textContent='Pause'; paintT();
+  tTick=setInterval(()=>{ tLeft--; paintT();
+    if(tLeft<=0){ clearInterval(tTick); tRunning=false; document.getElementById('timer-toggle').textContent='Start';
+      if(navigator.vibrate) navigator.vibrate([120,60,120]); paintT(); }
+  },1000);
+}
+document.getElementById('sheet').addEventListener('click',e=>{ if(e.target.id==='sheet') closeTimer(); });
+
+/* ---------------- boot ---------------- */
+render();
+</script>
+</body>
+</html>
